@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trắc nghiệm CNTT - Ôn tập và kiểm tra trực tuyến</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a href="#" id="brand" class="brand"><span class="logo">&lt;/&gt;</span>Trắc nghiệm CNTT</a>
+    <nav aria-label="Điều hướng">
+      <a href="#" data-go="home" class="on">Trang chủ</a>
+      <a href="#subjects" data-go="subjects">Môn học</a>
+      <a href="#history" data-go="history">Lịch sử</a>
+      <a href="#guide" data-go="guide">Hướng dẫn</a>
+      <a href="#contact" data-go="contact">Liên hệ</a>
+    </nav>
+    <div class="acct" id="guestBox">
+      <button type="button" class="btn small" id="btnLogin">Đăng nhập</button>
+      <button type="button" class="btn small solid" id="btnRegister">Đăng ký</button>
+    </div>
+    <div class="acct" id="userBox" hidden>
+      <span class="avatar" id="avatar" aria-hidden="true"></span>
+      <span class="uname" id="userName"></span>
+      <button type="button" class="btn small" id="btnLogout">Đăng xuất</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="home">
+    <div class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <h1>Ôn tập và kiểm tra kiến thức Công nghệ thông tin</h1>
+          <p class="lead">Mỗi lần làm bài là một đề khác nhau, rút ngẫu nhiên từ ngân hàng câu hỏi của từng môn.</p>
+          <label class="search">
+            <input id="search" type="search" placeholder="Tìm môn học, ví dụ: cơ sở dữ liệu" aria-label="Tìm môn học" autocomplete="off">
+          </label>
+        </div>
+        <aside class="spec">
+          <div class="modes" role="group" aria-label="Hình thức làm bài">
+            <button data-mode="review" aria-pressed="true">Ôn tập</button>
+            <button data-mode="test" aria-pressed="false">Kiểm tra</button>
+          </div>
+          <dl id="spec"></dl>
+          <label class="switch"><input type="checkbox" id="optShuffle" checked><span>Trộn thứ tự đáp án mỗi lần làm bài</span></label>
+        </aside>
+      </div>
+    </div>
+
+    <div class="wrap" id="subjects">
+      <div class="tools">
+        <div id="chips" class="chips" role="group" aria-label="Nhóm môn học"></div>
+        <span id="count" class="count"></span>
+      </div>
+      <div id="grid" class="cards"></div>
+      <p id="empty" class="empty" hidden></p>
+    </div>
+
+    <section class="wrap block" id="history">
+      <div class="bhead">
+        <div>
+          <h2 class="h2">Lịch sử làm bài gần đây</h2>
+          <p class="sub" id="histSub"></p>
+        </div>
+        <button id="clearHist" class="btn small">Xóa lịch sử</button>
+      </div>
+      <div id="histTable" class="tablewrap">
+        <table class="tbl">
+          <thead><tr><th>Môn học</th><th>Chế độ</th><th>Điểm</th><th>Đúng - Sai - Bỏ trống</th><th>Thời gian</th><th>Ngày làm</th></tr></thead>
+          <tbody id="histBody"></tbody>
+        </table>
+      </div>
+      <p id="histEmpty" class="empty" hidden>Chưa có lịch sử làm bài. Hoàn thành một bài để xem tại đây.</p>
+    </section>
+
+    <section class="wrap block" id="guide">
+      <h2 class="h2">Hướng dẫn sử dụng</h2>
+      <div class="steps">
+        <div class="step"><span class="n">1</span><h3>Chọn môn học</h3><p>Tìm theo tên hoặc lọc theo nhóm, rồi bấm vào thẻ môn muốn làm.</p></div>
+        <div class="step"><span class="n">2</span><h3>Chọn chế độ</h3><p>Ôn tập: chọn 20, 40 hoặc 60 câu, không giới hạn thời gian, hiện đáp án ngay và giải thích các câu sai khi làm xong. Kiểm tra: 40 câu, 50 phút, có điểm.</p></div>
+        <div class="step"><span class="n">3</span><h3>Làm bài</h3><p>Chọn đáp án và chuyển câu bằng bàn phím, hoặc đánh dấu câu để xem lại.</p><div class="keys"><kbd>A-D</kbd><kbd>←</kbd><kbd>→</kbd></div></div>
+        <div class="step"><span class="n">4</span><h3>Nộp bài và xem lại</h3><p>Xem điểm, xếp loại và các câu cần xem lại (có giải thích ở chế độ ôn tập), rồi làm lại với đề mới.</p></div>
+      </div>
+    </section>
+
+    <section class="wrap block" id="contact">
+      <h2 class="h2">Liên hệ</h2>
+      <p class="sub">Góp ý, báo lỗi câu hỏi hoặc trao đổi về đề tài, bạn có thể liên hệ trực tiếp với người thực hiện.</p>
+      <div class="cgrid">
+        <div class="panel">
+          <dl class="cinfo">
+            <div><dt>Sinh viên</dt><dd>Huỳnh Minh Tiến</dd></div>
+            <div><dt>Lớp</dt><dd>DA24TTD</dd></div>
+            <div><dt>Email</dt><dd><a href="mailto:tienlap31cm@gmail.com">tienlap31cm@gmail.com</a></dd></div>
+            <div><dt>GVHD</dt><dd>TS. Đoàn Phước Miền</dd></div>
+            <div><dt>Đơn vị</dt><dd>Khoa Công nghệ Thông tin, Trường Kỹ thuật và Công nghệ</dd></div>
+            <div><dt>Đề tài</dt><dd>Tìm hiểu và ứng dụng JavaScript trong xây dựng ứng dụng trắc nghiệm trực tuyến</dd></div>
+          </dl>
+        </div>
+        <form class="panel cform" id="contactForm" novalidate>
+          <h3>Gửi góp ý</h3>
+          <label class="fld">Họ và tên<input type="text" name="name" autocomplete="name" required></label>
+          <label class="fld">Email của bạn<input type="email" name="email" autocomplete="email" required></label>
+          <label class="fld">Nội dung<textarea name="msg" rows="4" required></textarea></label>
+          <p class="err" role="alert" hidden></p>
+          <button type="submit" class="btn">Gửi góp ý</button>
+          <p class="hint">Bấm gửi sẽ mở ứng dụng email trên máy của bạn với nội dung đã điền sẵn.</p>
+        </form>
+      </div>
+    </section>
+  </section>
+
+  <section id="quiz" hidden>
+    <div class="wrap">
+      <div class="qbar">
+        <div><strong id="qSubject"></strong> <span id="qMode" class="pill"></span></div>
+        <div id="timer" class="timer" hidden>50:00</div>
+      </div>
+      <div class="prog" aria-hidden="true"><i id="progBar"></i></div>
+      <div class="layout">
+        <div class="panel">
+          <div class="qhead">
+            <span id="qCount" class="count"></span>
+            <button id="flag" class="link"></button>
+          </div>
+          <h2 id="qText"></h2>
+          <div id="opts" class="opts" role="group" aria-label="Các đáp án"></div>
+          <div class="actions">
+            <button id="prev" class="btn ghost">Câu trước</button>
+            <button id="clear" class="btn ghost">Xóa lựa chọn</button>
+            <button id="next" class="btn">Câu sau</button>
+          </div>
+          <p class="hint">Phím tắt: A, B, C, D để chọn đáp án; mũi tên trái, phải để chuyển câu.</p>
+        </div>
+        <aside class="panel side">
+          <p id="doneText" class="count"></p>
+          <div id="grid2" class="grid"></div>
+          <div class="legend"><span class="lg done">Đã làm</span><span class="lg">Chưa làm</span><span class="lg flag">Đánh dấu</span></div>
+          <button id="submit" class="btn wide">Nộp bài</button>
+          <button id="quit" class="btn ghost wide">Thoát</button>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="result" hidden>
+    <div class="wrap">
+      <div class="panel res">
+        <div id="ring" class="ring"><span id="rScore"></span></div>
+        <div>
+          <h2 id="rTitle" class="rtitle"></h2>
+          <p id="rBand" class="band"></p>
+          <ul class="stats">
+            <li><b id="sRight"></b> câu đúng</li>
+            <li><b id="sWrong"></b> câu sai</li>
+            <li><b id="sBlank"></b> câu bỏ trống</li>
+            <li><b id="sTime"></b> thời gian làm bài</li>
+          </ul>
+          <div class="actions">
+            <button id="again" class="btn">Làm lại với đề mới</button>
+            <button id="home2" class="btn ghost">Về trang chủ</button>
+          </div>
+        </div>
+      </div>
+      <div class="tabs" role="group" aria-label="Lọc câu hỏi">
+        <button data-f="wrong" aria-pressed="true">Câu cần xem lại</button>
+        <button data-f="all" aria-pressed="false">Tất cả câu hỏi</button>
+      </div>
+      <ol id="review" class="rlist"></ol>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="brand"><span class="logo amber">&lt;/&gt;</span>Trắc nghiệm CNTT</div>
+        <p>Ứng dụng JavaScript thuần, chạy trực tiếp trên trình duyệt, không cần máy chủ.</p>
+      </div>
+      <dl class="fdl">
+        <div><dt>Đề tài</dt><dd>Tìm hiểu và ứng dụng JavaScript trong xây dựng ứng dụng trắc nghiệm trực tuyến</dd></div>
+        <div><dt>Sinh viên</dt><dd>Huỳnh Minh Tiến – lớp DA24TTD</dd></div>
+      </dl>
+    </div>
+    <p class="copy">Khoa Công nghệ Thông tin · Trường Kỹ thuật và Công nghệ · Đồ án cơ sở ngành 2026</p>
+  </div>
+</footer>
+<dialog id="pickDlg" class="dlg" aria-labelledby="pickTitle">
+  <div class="dlg-in">
+    <button type="button" class="x" data-close aria-label="Đóng">×</button>
+    <p class="dsub" id="pickSubject"></p>
+    <h2 id="pickTitle" class="dh">Bạn muốn ôn bao nhiêu câu?</h2>
+    <div class="picks" id="picks"></div>
+    <p class="hint">Câu hỏi được rút ngẫu nhiên, mỗi lần làm là một đề khác nhau.</p>
+  </div>
+</dialog>
+
+<dialog id="authDlg" class="dlg" aria-labelledby="authTitle">
+  <div class="dlg-in">
+    <button type="button" class="x" data-close aria-label="Đóng">×</button>
+    <h2 id="authTitle" class="dh">Đăng nhập</h2>
+    <p class="dsub" id="authSub"></p>
+
+    <form id="formLogin" novalidate>
+      <label class="fld">Email<input type="email" name="email" autocomplete="username" required></label>
+      <label class="fld">Mật khẩu<input type="password" name="password" autocomplete="current-password" required></label>
+      <p class="err" role="alert" hidden></p>
+      <button type="submit" class="btn wide">Đăng nhập</button>
+      <p class="swap">Chưa có tài khoản? <button type="button" class="link" data-auth="register">Đăng ký</button></p>
+    </form>
+
+    <form id="formRegister" novalidate hidden>
+      <label class="fld">Họ và tên<input type="text" name="name" autocomplete="name" required></label>
+      <label class="fld">Email<input type="email" name="email" autocomplete="username" required></label>
+      <label class="fld">Mật khẩu (từ 6 ký tự)<input type="password" name="password" autocomplete="new-password" required></label>
+      <label class="fld">Nhập lại mật khẩu<input type="password" name="confirm" autocomplete="new-password" required></label>
+      <p class="err" role="alert" hidden></p>
+      <button type="submit" class="btn wide">Tạo tài khoản</button>
+      <p class="swap">Đã có tài khoản? <button type="button" class="link" data-auth="login">Đăng nhập</button></p>
+    </form>
+  </div>
+</dialog>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="questions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
